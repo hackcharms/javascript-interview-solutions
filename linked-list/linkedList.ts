@@ -23,7 +23,7 @@ export default class LinkList {
   }
   lastNode() {
     let currentNode = this.head;
-    if (!currentNode) return this.head;
+    if (!currentNode) return currentNode;
     while (currentNode?.next) {
       currentNode = currentNode?.next;
     }
@@ -39,6 +39,17 @@ export default class LinkList {
       console.log(currentNode?.value);
     }
     return currentNode;
+  }
+  nthNode(index: number) {
+    let tempNode = this.head;
+    while (index) {
+      tempNode = tempNode?.next;
+      index--;
+    }
+    if (!tempNode) {
+      console.error(`invalid index ${index} to find node`);
+    }
+    return tempNode;
   }
   length() {
     if (!this.head) return 0;
@@ -108,5 +119,32 @@ export default class LinkList {
     const tempNext = previousNode.next;
     previousNode.next = tempNext.next;
     return this.head;
+  }
+  createCircleFromLast(index: number) {
+    const lastNode = this.lastNode();
+    if (!lastNode) return console.log("no head found");
+    const circlePoint = this.nthNode(index);
+    if (!circlePoint)
+      return console.error("invalid index, node not found", index);
+    lastNode.next = circlePoint;
+  }
+  hasCircle(breakCircle = false) {
+    let ptr1 = this.head;
+    let index = 0;
+    let ptr2 = this.head;
+    while (ptr1?.next && ptr2?.next) {
+      ptr1 = ptr1.next;
+      index++;
+      ptr2 = ptr2.next.next;
+      if (ptr1 === ptr2) {
+        if (breakCircle && ptr1) {
+          ptr1.next = undefined;
+        }
+        console.log(`Linked list has a circle at pointer`, ptr1?.next);
+        return true;
+      }
+    }
+    console.log(`Linked list does not has any circle `);
+    return false;
   }
 }
