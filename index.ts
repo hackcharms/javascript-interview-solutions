@@ -1,4 +1,2 @@
-function linkedList(name:string){
-    console.log(name);
-}
-linkedList('done bro');
+import { test } from "./linked-list";
+test();
