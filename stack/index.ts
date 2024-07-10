@@ -12,6 +12,7 @@ export function test() {
 }
 export function testImproved() {
   const stack = new StackImproved();
+  console.log("stack.size", "isEmpty", stack.size, stack.isEmpty);
   stack.print();
   console.log("stack.size", stack.size);
   stack.push({ name: "task1", des: "updated the data" });
