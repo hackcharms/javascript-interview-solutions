@@ -32,11 +32,14 @@ export class StackImproved {
   push(element: any) {
     this.$stack[this.pointer + 1] = element;
     this.pointer++;
+    return this.size;
   }
   pop() {
     if (this.isEmpty) return console.warn("Stack is empty");
+    const temp = this.$stack[this.pointer];
     delete this.$stack[this.pointer];
     this.pointer--;
+    return temp;
   }
   print() {
     console.log(`====== printing stack ======`);
