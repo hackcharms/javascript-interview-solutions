@@ -1,7 +1,8 @@
-// import { test } from "./linked-list";
-// test();
-import { test, testImproved } from "./stack";
-// test();
-testImproved();
-// import { test } from "./queue";
-// test();
+import { PaymentService } from "./design-patterrs/factory/services/PaymentService";
+
+const paymentService= new PaymentService();
+const defaultPayment=paymentService.getProvider();
+const stripe=paymentService.getProvider('stripe');
+console.log('default getProvider',defaultPayment.name)
+console.log('getProvider',stripe.name)
+stripe.credit(10);
