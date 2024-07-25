@@ -1,0 +1,1 @@
+export type PaymentGatewayType= 'stripe'|'paypal'
