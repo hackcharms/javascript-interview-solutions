@@ -22,10 +22,10 @@ describe("Queue", () => {
     q.enqueue(40);
     expect(q.peek()).toBe(10);
     expect(q.size).toBe(4);
-    q.dequeue();
-    q.dequeue();
-    q.dequeue();
-    q.dequeue();
+    expect(q.dequeue()).toBe(10);
+    expect(q.dequeue()).toBe(20);
+    expect(q.dequeue()).toBe(30);
+    expect(q.dequeue()).toBe(40);
     expect(q.isEmpty).toBeTruthy();
     expect(q.dequeue).toThrow(Error);
     q.enqueue(4);
