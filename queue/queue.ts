@@ -1,26 +1,35 @@
 export default class Queue<T> {
   private $queue: Record<number, T> = {};
-  private front = 0;
-  private rear = 0;
+  private rear = -1;
+  private front = -1;
   enqueue(element: T): typeof this.$queue {
-    this.$queue[this.front] = element;
-    this.front++;
+    if(this.isEmpty){
+      this.front=0;
+    }
+    this.rear++;
+    this.$queue[this.rear] = element;
     return this.$queue;
   }
-  dequeue(): number | void {
-    if (this.isEmpty) return console.warn("Queue is already empty");
-    const temp = this.$queue[this.rear];
-    delete this.$queue[this.rear];
-    this.rear++;
+  dequeue(): T | void {
+    if (this.isEmpty) throw Error("Queue is already empty");
+    const temp = this.$queue[this.front];
+    delete this.$queue[this.front];
+    if(this.front===this.rear){
+      this.rear=-1;
+      this.front=-1;
+    }else{
+      this.front++;
+    }
+    return temp;
   }
   get size(): number {
-    return this.front - this.rear;
+    return this.rear+1 - this.front;
   }
   get isEmpty(): boolean {
-    return !(this.front - this.rear);
+    return this.rear===-1 && this.front===-1;
   }
   peek(): T {
-    return this.$queue[this.front - 1];
+    return this.$queue[this.front];
   }
   print(): void {
     console.log(this.$queue);

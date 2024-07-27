@@ -13,20 +13,21 @@ describe("Queue", () => {
   });
   test("dequeue", () => {
     const q = new Queue<number>();
+    expect(q.dequeue).toThrow(Error);
     expect(q.isEmpty).toBeTruthy();
     q.enqueue(10);
     q.enqueue(20);
+    expect(q.peek()).toBe(10);
     q.enqueue(30);
     q.enqueue(40);
-    q.print();
-    console.warn(q.peek());
-    expect(q.peek()).toBe(40);
+    expect(q.peek()).toBe(10);
     expect(q.size).toBe(4);
     q.dequeue();
     q.dequeue();
     q.dequeue();
     q.dequeue();
     expect(q.isEmpty).toBeTruthy();
+    expect(q.dequeue).toThrow(Error);
     q.enqueue(4);
     expect(q.peek()).toBe(4);
   });
