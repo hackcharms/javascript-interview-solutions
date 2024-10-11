@@ -35,13 +35,12 @@ describe("Testing Reduces Polyfill",()=>{
             {category:'cookies',count:5},
 
         ];
-        arr.prototype.myReducer=reducer;
         function reducerFunc(acc:any,el:any){
                 if(el.category==='vegetable'){
                     return acc+=el.count;
                 }else return 0;
         }
-        const result=arr.myReducer(reducerFunc,0);
+        const result=reducer.bind(arr)(reducerFunc,0);
         
         expect(result).toBe(arr.reduce(reducerFunc,0));
     })
