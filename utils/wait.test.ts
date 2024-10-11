@@ -1,4 +1,4 @@
-import { wait } from "."
+import { wait } from "./"
 
 describe('Wait util function', () => {
     test('waits at most 2000ms', async () => {
