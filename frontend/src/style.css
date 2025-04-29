@@ -1,0 +1,79 @@
+/** @format */
+*{
+  box-sizing: border-box;
+}
+nav.navbar{
+  margin-left: auto;
+  margin-right: auto;
+}
+#app .main-wrapper{
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.navbar .nav-link {
+  display: flex;
+  gap: 8px;
+  list-style-type: none;
+}
+#todos{
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+#todo-list{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+#todo-list .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border: 1px solid red;
+  background-color: rgba(74, 178, 178, 0.877);
+  border-radius: 4px;
+}
+#todo-list .item .title.canceled {
+  pointer-events: none;
+  text-decoration: line-through;
+} 
+#todo-list .item .title.completed {
+  pointer-events: none;
+  color: green;
+} 
+#todo-list .item .title {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: large;
+  text-align: start;
+  border: 0;
+  width: 100%;
+}
+#todo-list .item:has(.title.completed) .cancel ,
+#todo-list .item:has(.title.canceled) .cancel {
+  display: none;
+}
+#todo-list .item .cancel {
+  cursor: pointer;
+  background-color: pink;
+  color: black;
+  border-radius: 4px;
+}
+
+input#todo-input {
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.4);
+  border-radius: 4px;
+  padding: 4px 8px;
+  outline-offset: 2px;
+}
+.footer-wrapper{
+  text-align: center;
+  color: rgb(155, 138, 138);
+}
