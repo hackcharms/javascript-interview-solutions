@@ -35,8 +35,8 @@ nav.navbar{
   display: flex;
   justify-content: space-between;
   padding: 4px 8px;
-  border: 1px solid red;
-  background-color: rgba(74, 178, 178, 0.877);
+  border: 1px solid gray;
+  background-color: rgba(177, 178, 178, 0.3);
   border-radius: 4px;
 }
 #todo-list .item .title.canceled {
@@ -66,8 +66,20 @@ nav.navbar{
   border-radius: 4px;
 }
 
+#input-form .input-warpper{
+  display: flex;
+  gap:2px;
+
+}
+input#search-input{
+  width:100%;
+  padding:4px 8px;
+  background-color: rgba(159, 159, 159, 0.4);
+  border-radius: 4px;
+
+}
 input#todo-input {
-  width: 100%;
+  flex-grow: 1;
   background-color: rgba(128, 128, 128, 0.4);
   border-radius: 4px;
   padding: 4px 8px;
